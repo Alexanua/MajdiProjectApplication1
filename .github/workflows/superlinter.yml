@@ -1,5 +1,6 @@
 name: Super-Linter
 
+# Kontrollerar när lintern ska köras
 on:
   push:
     branches: [ main ]
@@ -7,15 +8,26 @@ on:
     branches: [ main ]
 
 jobs:
+  # Definierar jobbet för att köra Super-Linter
   super-lint:
     name: Lint code base
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      # Checkout ditt repository
+      - name: Checkout repository
         uses: actions/checkout@v2
 
+      # Kör Super-Linter
       - name: Run Super-Linter
         uses: github/super-linter@v4
         env:
+          VALIDATE_ALL_CODEBASE: true
+          VALIDATE_JAVA: true
+          VALIDATE_JAVASCRIPT: false
+          VALIDATE_PYTHON: false
+          VALIDATE_PHP: false
+          VALIDATE_HTML: false
+          VALIDATE_CSS: false
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
