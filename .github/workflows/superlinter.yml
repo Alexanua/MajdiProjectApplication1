@@ -1,10 +1,12 @@
 name: Super-Linter
 
-on: 
+on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   super-lint:
@@ -20,12 +22,7 @@ jobs:
         env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_ALL_CODEBASE: false 
+          
           VALIDATE_JAVA: true
-         
           VALIDATE_JAVASCRIPT: false
-          VALIDATE_PYTHON: false
-          VALIDATE_PHP: false
-          VALIDATE_HTML: false
-          VALIDATE_CSS: false
-       
+         
